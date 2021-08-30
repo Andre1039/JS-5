@@ -2,27 +2,22 @@
 
 
 
-// const users = {
-
-// }
+// const users = {}
 
 // for (let i = 1; i <= 10; i++) {
-//     var username = prompt('Введите имя пользователя ' + i);
-//     var age = prompt('Введите возраст пользователя ' + i);
+//     let name = prompt('Введите имя');
+//     let age = prompt('Введите возраст');
 
-//     const id = {
-//         Имя: username,
-//         Возраст: age
+//     users[i] = {
+//         name: name,
+//         age: age
 //     }
+// }
 
-//     console.log('Пользователь ' + i);
-//     for(let key in id){
-//         console.log(key + ' ' + id[key]);
-//     }
-
-//     users[id + i] = {
-//         Имя: username,
-//         Возраст: age
+// for(const key in users){
+//     console.log(`Пользователь ${key}`);
+//     for(const newKey in users[key]){
+//         console.log(newKey == 'name' ? `Ваше имя ${users[key][newKey]}` : `Ваш возраст ${users[key][newKey]}`);
 //     }
 // }
 
@@ -33,29 +28,20 @@
 // alert('Задание 2')
 
 
-console.log(receipt());
+let recept = receipt();
 
-// for(var key in receipt()){
-//     console.log(key);
-//     // console.log(receipt()[key]) ;
-//     for(const newKey in receipt()[key]){  
-//         console.log(newKey + ' ' +  receipt()[key][newKey]); 
-//     }
-//     var info = info + receipt()[key][info];
-//     var list = key + ' ' + list
-// }
-// console.log('Вы заказали: ' + list);
+// console.log(recept);
 
+let menu = 'Ваш заказ ';
 
-// for(const key in receipt()){
-//     for(const newKey in receipt()[key]){
-//         var info = receipt()[key][newKey];
-//         var price = receipt()[key][newKey];
-//     }
-//     var list = list + ' ' + key + info +  ',';
-//     var mainprice = mainprice + price;
-// }
+let dostavka = 9000;
 
-// mainprice = mainprice + 9000;
+for(let key in recept){
+    menu = menu + `${key} `
+    for(let newKey in recept[key]) {
+        menu = newKey == 'info' ? menu + `${recept[key][newKey]} ` : menu + ''
+        dostavka = newKey == 'price' ? dostavka + recept[key][newKey] : dostavka
+    }
+}
 
-// console.log('Вы заказали: ' +  list + ' общая стоимость: ' + mainprice + '. С доставкой [9000]');
+console.log(`${menu} общая стоимость заказа: ${dostavka} это с учетом доставки 9000`);
